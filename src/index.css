@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #6825d9;
+	color: #f4f4f4;
+	font-family: "Rubik", sans-serif;
+}
+
+ul {
+	list-style: none;
+}
+
+.container {
+	max-width: 768px;
+	margin: auto;
+	padding: 0 20px;
+}
+
+#header {
+	text-align: center;
+	margin: 10px 0;
+}
+
+.block {
+	background-color: #f4f4f4;
+	color: #020403;
+	border-radius: 15px;
+	padding: 40px 50px;
+	margin: 20px 0;
+	justify-content: center;
+}
+
+.buttons {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0px 150px 20px 150px;
+}
+
+.btn {
+	width: 75px;
+	height: 50px;
+	background-color: #6825d9;
+	color: #f4f4f4;
+	cursor: pointer;
+	border: 0px;
+	border-radius: 5px;
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.btn:hover {
+	background-color: #220030;
+}
+
+.btn-clear {
+	width: 60px;
+	height: 30px;
+	font-size: 0.9rem;
+	margin: 20px;
+	cursor: pointer;
+}
+
+.btn-clear:hover {
+	background-color: #220030;
+}
+
+.info {
+	text-align: center;
+	padding: 10px 0 30px 0;
+	font-size: 1.6rem;
+}
+
+.notes-list {
+	display: flex;
+	justify-content: space-evenly;
+	margin: 15px;
+}
+
+.note-element {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #d3d3d3;
+	border-radius: 55px;
+}
+
+.btn-note {
+	background-color: #6825d9;
+	color: #f4f4f4;
+	border-radius: 25px;
+	height: 40px;
+	width: 40px;
+	border: none;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.btn-note-selected {
+	background-color: #220030;
+	color: #f4f4f4;
+	border-radius: 25px;
+	height: 40px;
+	width: 40px;
+	border: none;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.btn-sound {
+	background-color: #6825d9;
+	color: #f4f4f4;
+	border-radius: 25px;
+	height: 40px;
+	width: 40px;
+	border: none;
+	font-weight: 600;
+	margin: 5px 0px 5px 35px;
+	cursor: pointer;
+}
+
+.btn-note:hover {
+	background-color: #220030;
+}
+
+.btn-sound:hover {
+	background-color: #220030;
+}
+
+.cleaner {
+	margin-top: 10px;
+	margin-bottom: -10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.result-scale {
+	border-top: 1px solid black;
+	padding: 5px 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 1.2rem;
+}
+.result-scale-list {
+	list-style: none;
+}
+
+.result-scale-list li {
+	display: inline;
+	padding-right: 5px;
+}
+
+.marked {
+	font-weight: bold;
+}
