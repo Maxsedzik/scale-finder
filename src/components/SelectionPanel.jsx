@@ -1,21 +1,19 @@
 import React from "react";
 import Block from "./shared/Block";
+import { useContext } from "react";
+import AppContext from "../context/AppContext";
 
-function SelectionPanel({ notesClicked, chordsClicked }) {
-	const notesClickledHandler = () => {
-		notesClicked();
-	};
-	const chordsClickledHandler = () => {
-		chordsClicked();
-	};
+function SelectionPanel() {
+	const { notesClicked, chordsClicked } = useContext(AppContext);
+
 	return (
 		<Block>
 			<p className="info">Choose whether you want to select notes or chords</p>
 			<div className="buttons">
-				<button onClick={notesClickledHandler} className="btn">
+				<button onClick={notesClicked} className="btn">
 					Notes
 				</button>
-				<button onClick={chordsClickledHandler} className="btn">
+				<button onClick={chordsClicked} className="btn">
 					Chords
 				</button>
 			</div>

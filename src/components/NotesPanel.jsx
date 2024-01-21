@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Block from "./shared/Block";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -15,108 +15,39 @@ import fis from "../assets/fsharp.wav";
 import g from "../assets/g.wav";
 import gis from "../assets/gsharp.wav";
 import { FaMusic } from "react-icons/fa";
+import AppContext from "../context/AppContext";
 
-function NotesPanel({
-	setNotesToCompare,
-	notesToCompare,
-	setAminorResult,
-	setAisminorResult,
-	setBminorResult,
-	setCminorResult,
-	setCisminorResult,
-	setDminorResult,
-	setDisminorResult,
-	setEminorResult,
-	setFminorResult,
-	setFisminorResult,
-	setGminorResult,
-	setGisminorResult,
-	setAmajorResult,
-	setAismajorResult,
-	setBmajorResult,
-	setCmajorResult,
-	setCismajorResult,
-	setDmajorResult,
-	setDismajorResult,
-	setEmajorResult,
-	setFmajorResult,
-	setFismajorResult,
-	setGmajorResult,
-	setGismajorResult,
-	setIsResult,
-}) {
-	const [notesRequired, setNotesRequired] = useState(3);
-
-	const clearNotes = () => {
-		setAnote(false);
-		setAisnote(false);
-		setBnote(false);
-		setCnote(false);
-		setCisnote(false);
-		setDnote(false);
-		setDisnote(false);
-		setEnote(false);
-		setFnote(false);
-		setFisnote(false);
-		setGnote(false);
-		setGisnote(false);
-		setNotesRequired(3);
-		setNotesToCompare([]);
-		setAminorResult(false);
-		setAisminorResult(false);
-		setBminorResult(false);
-		setCminorResult(false);
-		setCisminorResult(false);
-		setDminorResult(false);
-		setDisminorResult(false);
-		setEminorResult(false);
-		setFminorResult(false);
-		setFisminorResult(false);
-		setGminorResult(false);
-		setGisminorResult(false);
-		setIsResult(false);
-		setAmajorResult(false);
-		setAismajorResult(false);
-		setBmajorResult(false);
-		setCmajorResult(false);
-		setCismajorResult(false);
-		setDmajorResult(false);
-		setDismajorResult(false);
-		setEmajorResult(false);
-		setFmajorResult(false);
-		setFismajorResult(false);
-		setGmajorResult(false);
-		setGismajorResult(false);
-	};
-
-	const [anote, setAnote] = useState(false);
-	const [aisnote, setAisnote] = useState(false);
-	const [bnote, setBnote] = useState(false);
-	const [cnote, setCnote] = useState(false);
-	const [cisnote, setCisnote] = useState(false);
-	const [dnote, setDnote] = useState(false);
-	const [disnote, setDisnote] = useState(false);
-	const [enote, setEnote] = useState(false);
-	const [fnote, setFnote] = useState(false);
-	const [fisnote, setFisnote] = useState(false);
-	const [gnote, setGnote] = useState(false);
-	const [gisnote, setGisnote] = useState(false);
-
-	function noteClicked(note, setNote, stateOfNote) {
-		if (!stateOfNote) {
-			setNote(true);
-			setNotesToCompare((notesToCompare) => [...notesToCompare, note]);
-			setNotesRequired((notesRequired) => (notesRequired -= 1));
-		} else {
-			setNote(false);
-			setNotesToCompare(notesToCompare.filter((e) => e != note));
-			setNotesRequired((notesRequired) => (notesRequired += 1));
-		}
-	}
-
-	function playSound(note) {
-		new Audio(note).play();
-	}
+function NotesPanel() {
+	const {
+		notesRequired,
+		playSound,
+		noteClicked,
+		anote,
+		aisnote,
+		bnote,
+		cnote,
+		cisnote,
+		dnote,
+		disnote,
+		enote,
+		fnote,
+		fisnote,
+		gnote,
+		gisnote,
+		setAnote,
+		setAisnote,
+		setBnote,
+		setCnote,
+		setCisnote,
+		setDnote,
+		setDisnote,
+		setEnote,
+		setFnote,
+		setFisnote,
+		setGnote,
+		setGisnote,
+		clearNotes,
+	} = useContext(AppContext);
 
 	return (
 		<Block>
