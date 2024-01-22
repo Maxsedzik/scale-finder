@@ -18,7 +18,6 @@ function App() {
 				<SelectionPanel />
 				{notesSelected && <NotesPanel />}
 				{chordsSelected && <ChordsPanel />}
-
 				{notesToCompare.length >= 3 && <Results />}
 			</div>
 		</>

@@ -6,6 +6,7 @@ export const AppProvider = ({ children }) => {
 	const [notesSelected, setNotesSelected] = useState(false);
 	const [chordsSelected, setChordsSelected] = useState(false);
 	const [notesRequired, setNotesRequired] = useState(3);
+
 	const [anote, setAnote] = useState(false);
 	const [aisnote, setAisnote] = useState(false);
 	const [bnote, setBnote] = useState(false);
@@ -18,7 +19,36 @@ export const AppProvider = ({ children }) => {
 	const [fisnote, setFisnote] = useState(false);
 	const [gnote, setGnote] = useState(false);
 	const [gisnote, setGisnote] = useState(false);
+
+	const [achord, setAchord] = useState(false);
+	const [aischord, setAischord] = useState(false);
+	const [bchord, setBchord] = useState(false);
+	const [cchord, setCchord] = useState(false);
+	const [cischord, setCischord] = useState(false);
+	const [dchord, setDchord] = useState(false);
+	const [dischord, setDischord] = useState(false);
+	const [echord, setEchord] = useState(false);
+	const [fchord, setFchord] = useState(false);
+	const [fischord, setFischord] = useState(false);
+	const [gchord, setGchord] = useState(false);
+	const [gischord, setGischord] = useState(false);
+
+	const [amchord, setAmchord] = useState(false);
+	const [aismchord, setAismchord] = useState(false);
+	const [bmchord, setBmchord] = useState(false);
+	const [cmchord, setCmchord] = useState(false);
+	const [cismchord, setCismchord] = useState(false);
+	const [dmchord, setDmchord] = useState(false);
+	const [dismchord, setDismchord] = useState(false);
+	const [emchord, setEmchord] = useState(false);
+	const [fmchord, setFmchord] = useState(false);
+	const [fismchord, setFismchord] = useState(false);
+	const [gmchord, setGmchord] = useState(false);
+	const [gismchord, setGismchord] = useState(false);
+
 	const [notesToCompare, setNotesToCompare] = useState([]);
+	const [chordsToCompare, setChordsToCompare] = useState([]);
+
 	const [aminorResult, setAminorResult] = useState(false);
 	const [aisminorResult, setAisminorResult] = useState(false);
 	const [bminorResult, setBminorResult] = useState(false);
@@ -198,6 +228,33 @@ export const AppProvider = ({ children }) => {
 		setGmajorResult(false);
 		setGismajorResult(false);
 	};
+	const clearChords = () => {
+		setChordsToCompare([]);
+		setAmchord(false);
+		setAismchord(false);
+		setBmchord(false);
+		setCmchord(false);
+		setCismchord(false);
+		setDmchord(false);
+		setDismchord(false);
+		setEmchord(false);
+		setFmchord(false);
+		setFismchord(false);
+		setGmchord(false);
+		setGismchord(false);
+		setAchord(false);
+		setAischord(false);
+		setBchord(false);
+		setCchord(false);
+		setCischord(false);
+		setDchord(false);
+		setDischord(false);
+		setEchord(false);
+		setFchord(false);
+		setFischord(false);
+		setGchord(false);
+		setGischord(false);
+	};
 
 	function noteClicked(note, setNote, stateOfNote) {
 		if (!stateOfNote) {
@@ -208,6 +265,18 @@ export const AppProvider = ({ children }) => {
 			setNote(false);
 			setNotesToCompare(notesToCompare.filter((e) => e !== note));
 			setNotesRequired((notesRequired) => (notesRequired += 1));
+		}
+	}
+
+	function chordClicked(chord, setChord, stateOfChord) {
+		if (!stateOfChord) {
+			setChord(true);
+			setChordsToCompare((chordsToCompare) => [...chordsToCompare, chord]);
+			// setNotesRequired((notesRequired) => (notesRequired -= 1));
+		} else {
+			setChord(false);
+			setChordsToCompare(chordsToCompare.filter((e) => e !== chord));
+			// setNotesRequired((notesRequired) => (notesRequired += 1));
 		}
 	}
 
@@ -344,6 +413,57 @@ export const AppProvider = ({ children }) => {
 				gismajor,
 				isResult,
 				notesMarking,
+				chordClicked,
+				chordsToCompare,
+				achord,
+				aischord,
+				bchord,
+				cchord,
+				cischord,
+				dchord,
+				dischord,
+				echord,
+				fchord,
+				fischord,
+				gchord,
+				gischord,
+				setAchord,
+				setAischord,
+				setBchord,
+				setCchord,
+				setCischord,
+				setDchord,
+				setDischord,
+				setEchord,
+				setFchord,
+				setFischord,
+				setGchord,
+				setGischord,
+				amchord,
+				aismchord,
+				bmchord,
+				cmchord,
+				cismchord,
+				dmchord,
+				dismchord,
+				emchord,
+				fmchord,
+				fismchord,
+				gmchord,
+				gismchord,
+				setAmchord,
+				setAismchord,
+				setBmchord,
+				setCmchord,
+				setCismchord,
+				setDmchord,
+				setDismchord,
+				setEmchord,
+				setFmchord,
+				setFismchord,
+				setGmchord,
+				setGismchord,
+				clearChords,
 			}}>
 			{children}
 		</AppContext.Provider>

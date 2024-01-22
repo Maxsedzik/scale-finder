@@ -1,17 +1,8 @@
 import React, { useContext } from "react";
 import Block from "./shared/Block";
-import { motion, AnimatePresence } from "framer-motion";
 import AppContext from "../context/AppContext";
 
 const Results = ({}) => {
-	function notesMarking(scale) {
-		return scale[0].map((note) => (
-			<li className={notesToCompare.includes(note) ? "marked" : ""} key={note}>
-				{note}
-			</li>
-		));
-	}
-
 	const {
 		aminorResult,
 		aisminorResult,
@@ -62,7 +53,7 @@ const Results = ({}) => {
 		fismajor,
 		gmajor,
 		gismajor,
-		notesToCompare,
+		notesMarking,
 	} = useContext(AppContext);
 	return (
 		<Block>
