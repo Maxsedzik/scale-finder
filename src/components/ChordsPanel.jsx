@@ -2,6 +2,31 @@ import React, { useContext } from "react";
 import Block from "./shared/Block";
 import AppContext from "../context/AppContext";
 import { FaMusic } from "react-icons/fa";
+import cmaj from "../assets/chords/cchord.wav";
+import cismaj from "../assets/chords/csharpchord.wav";
+import dmaj from "../assets/chords/dchord.wav";
+import dismaj from "../assets/chords/dsharpchord.wav";
+import emaj from "../assets/chords/echord.wav";
+import fmaj from "../assets/chords/fchord.wav";
+import fismaj from "../assets/chords/fsharpchord.wav";
+import gmaj from "../assets/chords/gchord.wav";
+import gismaj from "../assets/chords/gsharpchord.wav";
+import amaj from "../assets/chords/achord.wav";
+import aismaj from "../assets/chords/asharpchord.wav";
+import bmaj from "../assets/chords/bchord.wav";
+
+import cmin from "../assets/chords/cmchord.wav";
+import cismin from "../assets/chords/csharpmchord.wav";
+import dmin from "../assets/chords/dmchord.wav";
+import dismin from "../assets/chords/dsharpmchord.wav";
+import emin from "../assets/chords/emchord.wav";
+import fmin from "../assets/chords/fmchord.wav";
+import fismin from "../assets/chords/fsharpmchord.wav";
+import gmin from "../assets/chords/gmchord.wav";
+import gismin from "../assets/chords/gsharpmchord.wav";
+import amin from "../assets/chords/amchord.wav";
+import aismin from "../assets/chords/asharpmchord.wav";
+import bmin from "../assets/chords/bmchord.wav";
 
 function ChordsPanel() {
 	const {
@@ -68,7 +93,7 @@ function ChordsPanel() {
 						className={cchord ? "btn-note-selected" : "btn-note"}>
 						C
 					</button>
-					<button className="btn-sound" onClick={() => playSound()}>
+					<button className="btn-sound" onClick={() => playSound(cmaj)}>
 						<FaMusic color="#f4f4f4" />
 					</button>
 				</li>
@@ -78,7 +103,7 @@ function ChordsPanel() {
 						className={cischord ? "btn-note-selected" : "btn-note"}>
 						C#
 					</button>
-					<button className="btn-sound" onClick={() => playSound()}>
+					<button className="btn-sound" onClick={() => playSound(cismaj)}>
 						<FaMusic color="#f4f4f4" />
 					</button>
 				</li>
@@ -88,7 +113,7 @@ function ChordsPanel() {
 						className={dchord ? "btn-note-selected" : "btn-note"}>
 						D
 					</button>
-					<button className="btn-sound" onClick={() => playSound()}>
+					<button className="btn-sound" onClick={() => playSound(dmaj)}>
 						<FaMusic color="#f4f4f4" />
 					</button>
 				</li>
@@ -98,7 +123,7 @@ function ChordsPanel() {
 						className={dischord ? "btn-note-selected" : "btn-note"}>
 						D#
 					</button>
-					<button className="btn-sound" onClick={() => playSound()}>
+					<button className="btn-sound" onClick={() => playSound(dismaj)}>
 						<FaMusic color="#f4f4f4" />
 					</button>
 				</li>
@@ -110,7 +135,7 @@ function ChordsPanel() {
 						className={echord ? "btn-note-selected" : "btn-note"}>
 						E
 					</button>
-					<button className="btn-sound" onClick={() => playSound()}>
+					<button className="btn-sound" onClick={() => playSound(emaj)}>
 						<FaMusic color="#f4f4f4" />
 					</button>
 				</li>
@@ -120,7 +145,7 @@ function ChordsPanel() {
 						className={fchord ? "btn-note-selected" : "btn-note"}>
 						F
 					</button>
-					<button className="btn-sound" onClick={() => playSound()}>
+					<button className="btn-sound" onClick={() => playSound(fmaj)}>
 						<FaMusic color="#f4f4f4" />
 					</button>
 				</li>
@@ -130,7 +155,7 @@ function ChordsPanel() {
 						className={fischord ? "btn-note-selected" : "btn-note"}>
 						F#
 					</button>
-					<button className="btn-sound" onClick={() => playSound()}>
+					<button className="btn-sound" onClick={() => playSound(fismaj)}>
 						<FaMusic color="#f4f4f4" />
 					</button>
 				</li>
@@ -140,7 +165,7 @@ function ChordsPanel() {
 						className={gchord ? "btn-note-selected" : "btn-note"}>
 						G
 					</button>
-					<button className="btn-sound" onClick={() => playSound()}>
+					<button className="btn-sound" onClick={() => playSound(gmaj)}>
 						<FaMusic color="#f4f4f4" />
 					</button>
 				</li>
@@ -152,7 +177,7 @@ function ChordsPanel() {
 						className={gischord ? "btn-note-selected" : "btn-note"}>
 						G#
 					</button>
-					<button className="btn-sound" onClick={() => playSound()}>
+					<button className="btn-sound" onClick={() => playSound(gismaj)}>
 						<FaMusic color="#f4f4f4" />
 					</button>
 				</li>
@@ -162,7 +187,7 @@ function ChordsPanel() {
 						className={achord ? "btn-note-selected" : "btn-note"}>
 						A
 					</button>
-					<button className="btn-sound" onClick={() => playSound()}>
+					<button className="btn-sound" onClick={() => playSound(amaj)}>
 						<FaMusic color="#f4f4f4" />
 					</button>
 				</li>
@@ -172,7 +197,7 @@ function ChordsPanel() {
 						className={aischord ? "btn-note-selected" : "btn-note"}>
 						A#
 					</button>
-					<button className="btn-sound" onClick={() => playSound()}>
+					<button className="btn-sound" onClick={() => playSound(aismaj)}>
 						<FaMusic color="#f4f4f4" />
 					</button>
 				</li>
@@ -182,7 +207,7 @@ function ChordsPanel() {
 						className={bchord ? "btn-note-selected" : "btn-note"}>
 						B
 					</button>
-					<button className="btn-sound" onClick={() => playSound()}>
+					<button className="btn-sound" onClick={() => playSound(bmaj)}>
 						<FaMusic color="#f4f4f4" />
 					</button>
 				</li>
@@ -194,7 +219,7 @@ function ChordsPanel() {
 						className={cmchord ? "btn-note-selected" : "btn-note"}>
 						Cm
 					</button>
-					<button className="btn-sound" onClick={() => playSound()}>
+					<button className="btn-sound" onClick={() => playSound(cmin)}>
 						<FaMusic color="#f4f4f4" />
 					</button>
 				</li>
@@ -204,7 +229,7 @@ function ChordsPanel() {
 						className={cismchord ? "btn-note-selected" : "btn-note"}>
 						C#m
 					</button>
-					<button className="btn-sound" onClick={() => playSound()}>
+					<button className="btn-sound" onClick={() => playSound(cismin)}>
 						<FaMusic color="#f4f4f4" />
 					</button>
 				</li>
@@ -214,7 +239,7 @@ function ChordsPanel() {
 						className={dmchord ? "btn-note-selected" : "btn-note"}>
 						Dm
 					</button>
-					<button className="btn-sound" onClick={() => playSound()}>
+					<button className="btn-sound" onClick={() => playSound(dmin)}>
 						<FaMusic color="#f4f4f4" />
 					</button>
 				</li>
@@ -224,7 +249,7 @@ function ChordsPanel() {
 						className={dismchord ? "btn-note-selected" : "btn-note"}>
 						D#m
 					</button>
-					<button className="btn-sound" onClick={() => playSound()}>
+					<button className="btn-sound" onClick={() => playSound(dismin)}>
 						<FaMusic color="#f4f4f4" />
 					</button>
 				</li>
@@ -236,7 +261,7 @@ function ChordsPanel() {
 						className={emchord ? "btn-note-selected" : "btn-note"}>
 						Em
 					</button>
-					<button className="btn-sound" onClick={() => playSound()}>
+					<button className="btn-sound" onClick={() => playSound(emin)}>
 						<FaMusic color="#f4f4f4" />
 					</button>
 				</li>
@@ -246,7 +271,7 @@ function ChordsPanel() {
 						className={fmchord ? "btn-note-selected" : "btn-note"}>
 						Fm
 					</button>
-					<button className="btn-sound" onClick={() => playSound()}>
+					<button className="btn-sound" onClick={() => playSound(fmin)}>
 						<FaMusic color="#f4f4f4" />
 					</button>
 				</li>
@@ -256,7 +281,7 @@ function ChordsPanel() {
 						className={fismchord ? "btn-note-selected" : "btn-note"}>
 						F#m
 					</button>
-					<button className="btn-sound" onClick={() => playSound()}>
+					<button className="btn-sound" onClick={() => playSound(fismin)}>
 						<FaMusic color="#f4f4f4" />
 					</button>
 				</li>
@@ -266,7 +291,7 @@ function ChordsPanel() {
 						className={gmchord ? "btn-note-selected" : "btn-note"}>
 						Gm
 					</button>
-					<button className="btn-sound" onClick={() => playSound()}>
+					<button className="btn-sound" onClick={() => playSound(gmin)}>
 						<FaMusic color="#f4f4f4" />
 					</button>
 				</li>
@@ -278,7 +303,7 @@ function ChordsPanel() {
 						className={gismchord ? "btn-note-selected" : "btn-note"}>
 						G#m
 					</button>
-					<button className="btn-sound" onClick={() => playSound()}>
+					<button className="btn-sound" onClick={() => playSound(gismin)}>
 						<FaMusic color="#f4f4f4" />
 					</button>
 				</li>
@@ -288,7 +313,7 @@ function ChordsPanel() {
 						className={amchord ? "btn-note-selected" : "btn-note"}>
 						Am
 					</button>
-					<button className="btn-sound" onClick={() => playSound()}>
+					<button className="btn-sound" onClick={() => playSound(amin)}>
 						<FaMusic color="#f4f4f4" />
 					</button>
 				</li>
@@ -298,7 +323,7 @@ function ChordsPanel() {
 						className={aismchord ? "btn-note-selected" : "btn-note"}>
 						A#m
 					</button>
-					<button className="btn-sound" onClick={() => playSound()}>
+					<button className="btn-sound" onClick={() => playSound(aismin)}>
 						<FaMusic color="#f4f4f4" />
 					</button>
 				</li>
@@ -308,7 +333,7 @@ function ChordsPanel() {
 						className={bmchord ? "btn-note-selected" : "btn-note"}>
 						Bm
 					</button>
-					<button className="btn-sound" onClick={() => playSound()}>
+					<button className="btn-sound" onClick={() => playSound(bmin)}>
 						<FaMusic color="#f4f4f4" />
 					</button>
 				</li>

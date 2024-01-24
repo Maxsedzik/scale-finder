@@ -183,8 +183,8 @@ export const AppProvider = ({ children }) => {
 		setNotesSelected(false);
 	};
 
-	function playSound(note) {
-		new Audio(note).play();
+	function playSound(sound) {
+		new Audio(sound).play();
 	}
 
 	const clearNotes = () => {
