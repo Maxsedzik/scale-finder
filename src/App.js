@@ -7,18 +7,25 @@ import { useState, useEffect, useContext } from "react";
 import AppContext from "./context/AppContext";
 
 function App() {
-	const { notesSelected, chordsSelected, notesToCompare } =
-		useContext(AppContext);
+	const {
+		notesSelected,
+		chordsSelected,
+		notesToCompare,
+		chordsToCompare,
+		aminor,
+		aminorResult,
+	} = useContext(AppContext);
 
 	return (
 		<>
 			<div className="container">
 				<Header />
-
 				<SelectionPanel />
 				{notesSelected && <NotesPanel />}
 				{chordsSelected && <ChordsPanel />}
-				{notesToCompare.length >= 3 && <Results />}
+				{notesToCompare.length >= 3 || chordsToCompare.length >= 1 ? (
+					<Results />
+				) : null}
 			</div>
 		</>
 	);

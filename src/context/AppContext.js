@@ -305,13 +305,33 @@ export const AppProvider = ({ children }) => {
 		checkingScale(fismajor, setFismajorResult);
 		checkingScale(gmajor, setGmajorResult);
 		checkingScale(gismajor, setGismajorResult);
-	}, [notesToCompare]);
+	}, [notesToCompare, chordsToCompare]);
 
 	function checkingScale(scale, setScaleResult) {
+		if (notesSelected) {
+			checkScaleByNotes(scale, setScaleResult);
+		} else if (chordsSelected) {
+			checkScaleByChords(scale, setScaleResult);
+		}
+	}
+
+	function checkScaleByNotes(scale, setScaleResult) {
 		if (
 			notesToCompare.filter((note) => scale[0].includes(note)).length ===
 				notesToCompare.length &&
 			notesToCompare.length >= 3
+		) {
+			setScaleResult(true);
+			setIsResult(true);
+		} else {
+			setScaleResult(false);
+		}
+	}
+
+	function checkScaleByChords(scale, setScaleResult) {
+		if (
+			chordsToCompare.filter((chord) => scale[1].includes(chord)).length ===
+			chordsToCompare.length
 		) {
 			setScaleResult(true);
 			setIsResult(true);
@@ -327,6 +347,17 @@ export const AppProvider = ({ children }) => {
 			</li>
 		));
 	}
+
+	function chordsMarking(scale) {
+		return scale[1].map((chord) => (
+			<li
+				className={chordsToCompare.includes(chord) ? "marked" : ""}
+				key={chord}>
+				{chord}
+			</li>
+		));
+	}
+
 	return (
 		<AppContext.Provider
 			value={{
@@ -413,6 +444,7 @@ export const AppProvider = ({ children }) => {
 				gismajor,
 				isResult,
 				notesMarking,
+				chordsMarking,
 				chordClicked,
 				chordsToCompare,
 				achord,

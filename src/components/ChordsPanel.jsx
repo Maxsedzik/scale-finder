@@ -31,7 +31,6 @@ import bmin from "../assets/chords/bmchord.wav";
 function ChordsPanel() {
 	const {
 		chordClicked,
-		chordsToCompare,
 		achord,
 		aischord,
 		bchord,
@@ -287,7 +286,7 @@ function ChordsPanel() {
 				</li>
 				<li className="note-element">
 					<button
-						onClick={() => chordClicked("G", setGmchord, gmchord)}
+						onClick={() => chordClicked("Gm", setGmchord, gmchord)}
 						className={gmchord ? "btn-note-selected" : "btn-note"}>
 						Gm
 					</button>
