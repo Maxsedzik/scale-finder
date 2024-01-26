@@ -3,78 +3,8 @@ import { createContext, useState, useEffect } from "react";
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-	const [notesSelected, setNotesSelected] = useState(false);
-	const [chordsSelected, setChordsSelected] = useState(false);
-	const [notesRequired, setNotesRequired] = useState(3);
-
-	const [anote, setAnote] = useState(false);
-	const [aisnote, setAisnote] = useState(false);
-	const [bnote, setBnote] = useState(false);
-	const [cnote, setCnote] = useState(false);
-	const [cisnote, setCisnote] = useState(false);
-	const [dnote, setDnote] = useState(false);
-	const [disnote, setDisnote] = useState(false);
-	const [enote, setEnote] = useState(false);
-	const [fnote, setFnote] = useState(false);
-	const [fisnote, setFisnote] = useState(false);
-	const [gnote, setGnote] = useState(false);
-	const [gisnote, setGisnote] = useState(false);
-
-	const [achord, setAchord] = useState(false);
-	const [aischord, setAischord] = useState(false);
-	const [bchord, setBchord] = useState(false);
-	const [cchord, setCchord] = useState(false);
-	const [cischord, setCischord] = useState(false);
-	const [dchord, setDchord] = useState(false);
-	const [dischord, setDischord] = useState(false);
-	const [echord, setEchord] = useState(false);
-	const [fchord, setFchord] = useState(false);
-	const [fischord, setFischord] = useState(false);
-	const [gchord, setGchord] = useState(false);
-	const [gischord, setGischord] = useState(false);
-
-	const [amchord, setAmchord] = useState(false);
-	const [aismchord, setAismchord] = useState(false);
-	const [bmchord, setBmchord] = useState(false);
-	const [cmchord, setCmchord] = useState(false);
-	const [cismchord, setCismchord] = useState(false);
-	const [dmchord, setDmchord] = useState(false);
-	const [dismchord, setDismchord] = useState(false);
-	const [emchord, setEmchord] = useState(false);
-	const [fmchord, setFmchord] = useState(false);
-	const [fismchord, setFismchord] = useState(false);
-	const [gmchord, setGmchord] = useState(false);
-	const [gismchord, setGismchord] = useState(false);
-
-	const [notesToCompare, setNotesToCompare] = useState([]);
-	const [chordsToCompare, setChordsToCompare] = useState([]);
-
-	const [aminorResult, setAminorResult] = useState(false);
-	const [aisminorResult, setAisminorResult] = useState(false);
-	const [bminorResult, setBminorResult] = useState(false);
-	const [cminorResult, setCminorResult] = useState(false);
-	const [cisminorResult, setCisminorResult] = useState(false);
-	const [dminorResult, setDminorResult] = useState(false);
-	const [disminorResult, setDisminorResult] = useState(false);
-	const [eminorResult, setEminorResult] = useState(false);
-	const [fminorResult, setFminorResult] = useState(false);
-	const [fisminorResult, setFisminorResult] = useState(false);
-	const [gminorResult, setGminorResult] = useState(false);
-	const [gisminorResult, setGisminorResult] = useState(false);
-	const [amajorResult, setAmajorResult] = useState(false);
-	const [aismajorResult, setAismajorResult] = useState(false);
-	const [bmajorResult, setBmajorResult] = useState(false);
-	const [cmajorResult, setCmajorResult] = useState(false);
-	const [cismajorResult, setCismajorResult] = useState(false);
-	const [dmajorResult, setDmajorResult] = useState(false);
-	const [dismajorResult, setDismajorResult] = useState(false);
-	const [emajorResult, setEmajorResult] = useState(false);
-	const [fmajorResult, setFmajorResult] = useState(false);
-	const [fismajorResult, setFismajorResult] = useState(false);
-	const [gmajorResult, setGmajorResult] = useState(false);
-	const [gismajorResult, setGismajorResult] = useState(false);
-	const [isResult, setIsResult] = useState(false);
-
+	//Data
+	//Scales [[notes],[chords]]
 	const cminor = [
 		["C", "D", "D#", "F", "G", "G#", "A#"],
 		["Cm", "Ddim", "D#", "Fm", "Gm", "G#", "A#"],
@@ -172,6 +102,85 @@ export const AppProvider = ({ children }) => {
 		["B", "C#", "D#", "E", "F#", "G#", "A#"],
 		["B", "C#m", "D#m", "E", "F#", "G#m", "A#dim"],
 	];
+
+	//States
+
+	const [notesSelected, setNotesSelected] = useState(false);
+	const [chordsSelected, setChordsSelected] = useState(false);
+
+	const [notesRequired, setNotesRequired] = useState(3);
+
+	const [anote, setAnote] = useState(false);
+	const [aisnote, setAisnote] = useState(false);
+	const [bnote, setBnote] = useState(false);
+	const [cnote, setCnote] = useState(false);
+	const [cisnote, setCisnote] = useState(false);
+	const [dnote, setDnote] = useState(false);
+	const [disnote, setDisnote] = useState(false);
+	const [enote, setEnote] = useState(false);
+	const [fnote, setFnote] = useState(false);
+	const [fisnote, setFisnote] = useState(false);
+	const [gnote, setGnote] = useState(false);
+	const [gisnote, setGisnote] = useState(false);
+
+	//
+	const [achord, setAchord] = useState(false);
+	const [aischord, setAischord] = useState(false);
+	const [bchord, setBchord] = useState(false);
+	const [cchord, setCchord] = useState(false);
+	const [cischord, setCischord] = useState(false);
+	const [dchord, setDchord] = useState(false);
+	const [dischord, setDischord] = useState(false);
+	const [echord, setEchord] = useState(false);
+	const [fchord, setFchord] = useState(false);
+	const [fischord, setFischord] = useState(false);
+	const [gchord, setGchord] = useState(false);
+	const [gischord, setGischord] = useState(false);
+	const [amchord, setAmchord] = useState(false);
+	const [aismchord, setAismchord] = useState(false);
+	const [bmchord, setBmchord] = useState(false);
+	const [cmchord, setCmchord] = useState(false);
+	const [cismchord, setCismchord] = useState(false);
+	const [dmchord, setDmchord] = useState(false);
+	const [dismchord, setDismchord] = useState(false);
+	const [emchord, setEmchord] = useState(false);
+	const [fmchord, setFmchord] = useState(false);
+	const [fismchord, setFismchord] = useState(false);
+	const [gmchord, setGmchord] = useState(false);
+	const [gismchord, setGismchord] = useState(false);
+
+	//Array of notes/chords that were selected
+	const [notesToCompare, setNotesToCompare] = useState([]);
+	const [chordsToCompare, setChordsToCompare] = useState([]);
+
+	const [aminorResult, setAminorResult] = useState(false);
+	const [aisminorResult, setAisminorResult] = useState(false);
+	const [bminorResult, setBminorResult] = useState(false);
+	const [cminorResult, setCminorResult] = useState(false);
+	const [cisminorResult, setCisminorResult] = useState(false);
+	const [dminorResult, setDminorResult] = useState(false);
+	const [disminorResult, setDisminorResult] = useState(false);
+	const [eminorResult, setEminorResult] = useState(false);
+	const [fminorResult, setFminorResult] = useState(false);
+	const [fisminorResult, setFisminorResult] = useState(false);
+	const [gminorResult, setGminorResult] = useState(false);
+	const [gisminorResult, setGisminorResult] = useState(false);
+	const [amajorResult, setAmajorResult] = useState(false);
+	const [aismajorResult, setAismajorResult] = useState(false);
+	const [bmajorResult, setBmajorResult] = useState(false);
+	const [cmajorResult, setCmajorResult] = useState(false);
+	const [cismajorResult, setCismajorResult] = useState(false);
+	const [dmajorResult, setDmajorResult] = useState(false);
+	const [dismajorResult, setDismajorResult] = useState(false);
+	const [emajorResult, setEmajorResult] = useState(false);
+	const [fmajorResult, setFmajorResult] = useState(false);
+	const [fismajorResult, setFismajorResult] = useState(false);
+	const [gmajorResult, setGmajorResult] = useState(false);
+	const [gismajorResult, setGismajorResult] = useState(false);
+	const [isResult, setIsResult] = useState(false);
+
+	//Functions
+
 	const notesClicked = () => {
 		console.log("notes");
 		setNotesSelected(true);
