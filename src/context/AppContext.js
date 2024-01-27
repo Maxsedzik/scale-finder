@@ -104,12 +104,14 @@ export const AppProvider = ({ children }) => {
 	];
 
 	//States
-
+	//Whether were finding scale by chords or notes. By default must be false.
 	const [notesSelected, setNotesSelected] = useState(false);
 	const [chordsSelected, setChordsSelected] = useState(false);
 
+	//Minimum amount of notes that must be selected to find the scale. By default must be 3.
 	const [notesRequired, setNotesRequired] = useState(3);
 
+	//State of every note. True means that note was selected. By default must be false.
 	const [anote, setAnote] = useState(false);
 	const [aisnote, setAisnote] = useState(false);
 	const [bnote, setBnote] = useState(false);
@@ -123,7 +125,7 @@ export const AppProvider = ({ children }) => {
 	const [gnote, setGnote] = useState(false);
 	const [gisnote, setGisnote] = useState(false);
 
-	//
+	//State of every chord. True means that chord was selected. By default must be false.
 	const [achord, setAchord] = useState(false);
 	const [aischord, setAischord] = useState(false);
 	const [bchord, setBchord] = useState(false);
@@ -149,10 +151,11 @@ export const AppProvider = ({ children }) => {
 	const [gmchord, setGmchord] = useState(false);
 	const [gismchord, setGismchord] = useState(false);
 
-	//Array of notes/chords that were selected
+	//Array of notes/chords that were selected. By default must be empty array.
 	const [notesToCompare, setNotesToCompare] = useState([]);
 	const [chordsToCompare, setChordsToCompare] = useState([]);
 
+	//State of every scale. True means that scale matches selected notes/chords. By default must be false.
 	const [aminorResult, setAminorResult] = useState(false);
 	const [aisminorResult, setAisminorResult] = useState(false);
 	const [bminorResult, setBminorResult] = useState(false);
@@ -177,26 +180,33 @@ export const AppProvider = ({ children }) => {
 	const [fismajorResult, setFismajorResult] = useState(false);
 	const [gmajorResult, setGmajorResult] = useState(false);
 	const [gismajorResult, setGismajorResult] = useState(false);
+
+	//Whether any scale fitted selected notes/chords. True means they did. By default must be false.
 	const [isResult, setIsResult] = useState(false);
 
 	//Functions
-
+	//Function called by choosing "Select by notes". It displays NotesPanel component.
 	const notesClicked = () => {
-		console.log("notes");
 		setNotesSelected(true);
 		setChordsSelected(false);
 	};
+
+	//Function called by choosing "Select by chords". It displays ChordsPanel component.
 	const chordsClicked = () => {
-		console.log("chords");
 		setChordsSelected(true);
 		setNotesSelected(false);
 	};
 
+	//Function that plays sound of a note/scale. Called by button inside Notes/ChordsPanel. Argument is a note/chord imported from data folder.
 	function playSound(sound) {
 		new Audio(sound).play();
 	}
 
+	//Function called by clear button in NotesPanel. Setting states of all notes to false, current required amounts of notes back to 3, result to not be found and clearing array of notes that were to be compared.
 	const clearNotes = () => {
+		setNotesRequired(3);
+		setNotesToCompare([]);
+		setIsResult(false);
 		setAnote(false);
 		setAisnote(false);
 		setBnote(false);
@@ -209,8 +219,6 @@ export const AppProvider = ({ children }) => {
 		setFisnote(false);
 		setGnote(false);
 		setGisnote(false);
-		setNotesRequired(3);
-		setNotesToCompare([]);
 		setAminorResult(false);
 		setAisminorResult(false);
 		setBminorResult(false);
@@ -223,7 +231,6 @@ export const AppProvider = ({ children }) => {
 		setFisminorResult(false);
 		setGminorResult(false);
 		setGisminorResult(false);
-		setIsResult(false);
 		setAmajorResult(false);
 		setAismajorResult(false);
 		setBmajorResult(false);
@@ -237,8 +244,11 @@ export const AppProvider = ({ children }) => {
 		setGmajorResult(false);
 		setGismajorResult(false);
 	};
+
+	//Function called by clear button in ChordssPanel. Setting states of all chords to false, result to not be found and clearing array of chords that were to be compared.
 	const clearChords = () => {
 		setChordsToCompare([]);
+		setIsResult(false);
 		setAmchord(false);
 		setAismchord(false);
 		setBmchord(false);
@@ -265,30 +275,45 @@ export const AppProvider = ({ children }) => {
 		setGischord(false);
 	};
 
+	//Function handling selecting(clicking) specific note. Arguments are note(string), setNote which is set function from useState hook and stateOfNote which is current state of a note.
 	function noteClicked(note, setNote, stateOfNote) {
+		//!stateOfNote means note was not selected before.
 		if (!stateOfNote) {
+			//Setting the state of a note to true.
 			setNote(true);
+			//Adding note to array that will be compared to all of the scale arrays.
 			setNotesToCompare((notesToCompare) => [...notesToCompare, note]);
+			//Decreasing current required amount of notes that must be selected.
 			setNotesRequired((notesRequired) => (notesRequired -= 1));
 		} else {
+			//Clicking a note whose state was true means, note must be "unclicked".
+			//Setting state of a note to false.
 			setNote(false);
+			//Clearing array of notes to be compared from "unclicked" note.
 			setNotesToCompare(notesToCompare.filter((e) => e !== note));
+			//Increasing current required amount of notes that must be selected.
 			setNotesRequired((notesRequired) => (notesRequired += 1));
 		}
 	}
 
+	//Function handling selecting(clicking) specific Chord. Arguments are chord(string), setChord which is set function from useState hook and stateOfChord which is current state of a chord.
 	function chordClicked(chord, setChord, stateOfChord) {
+		//!stateOfChord means chord was not selected before.
 		if (!stateOfChord) {
+			//Setting the state of a chord to true.
 			setChord(true);
+			//Adding chord to array that will be compared to all of the scale arrays.
 			setChordsToCompare((chordsToCompare) => [...chordsToCompare, chord]);
-			// setNotesRequired((notesRequired) => (notesRequired -= 1));
 		} else {
+			//Clicking a chord whose state was true means, chord must be "unclicked".
+			//Setting state of a chord to false.
 			setChord(false);
+			//Clearing array of chords to be compared from "unclicked" chord.
 			setChordsToCompare(chordsToCompare.filter((e) => e !== chord));
-			// setNotesRequired((notesRequired) => (notesRequired += 1));
 		}
 	}
 
+	//Calling checkingScale function for every scale everytime the arrays of selected notes/chords changed.
 	useEffect(() => {
 		checkingScale(aminor, setAminorResult);
 		checkingScale(aisminor, setAisminorResult);
@@ -316,40 +341,58 @@ export const AppProvider = ({ children }) => {
 		checkingScale(gismajor, setGismajorResult);
 	}, [notesToCompare, chordsToCompare]);
 
+	//Function that handle finding fitting scale for either notes or chords. Arguments are scale(array) and setScaleResult which is a function that changes state of a positive match.
 	function checkingScale(scale, setScaleResult) {
+		//For notes
 		if (notesSelected) {
 			checkScaleByNotes(scale, setScaleResult);
+			//For chords
 		} else if (chordsSelected) {
 			checkScaleByChords(scale, setScaleResult);
 		}
 	}
 
+	//Function that is checking if scale fits notes that were selected to compare. Arguments were passed in checkingScale function.
 	function checkScaleByNotes(scale, setScaleResult) {
 		if (
+			//Clearing array from all notes that are not present in a given scale and then comparing length of that cleared array to the length of an uncleared array. Same length means there were no not unmatching notes and scale is fitting.
 			notesToCompare.filter((note) => scale[0].includes(note)).length ===
 				notesToCompare.length &&
+			//Check if required amount of notes were selected.
 			notesToCompare.length >= 3
 		) {
+			//Setting result of a given scale to true(scale is fitting).
 			setScaleResult(true);
+			//Setting isResult to true. There was a match and there is result to be shown.
 			setIsResult(true);
 		} else {
+			//Uncleared and cleared arrays were different, meaning that scale does not fit because of some notes.
+			//Setting resulr of a given scale to false(scale is not fitting.)
 			setScaleResult(false);
 		}
 	}
 
+	//Function that is checking if scale fits chords that were selected to compare. Arguments were passed in checkingScale function.
 	function checkScaleByChords(scale, setScaleResult) {
 		if (
+			//Clearing array from all chords that are not present in a given scale and then comparing length of that cleared array to the length of an uncleared array. Same length means there were no not unmatching chords and scale is fitting.
 			chordsToCompare.filter((chord) => scale[1].includes(chord)).length ===
 			chordsToCompare.length
 		) {
+			//Setting result of a given scale to true(scale is fitting).
 			setScaleResult(true);
+			//Setting isResult to true. There was a match and there is result to be shown.
 			setIsResult(true);
 		} else {
+			//Uncleared and cleared arrays were different, meaning that scale does not fit because of some chords.
+			//Setting resulr of a given scale to false(scale is not fitting.)
 			setScaleResult(false);
 		}
 	}
 
+	//Functions that displays the notes of a fitting scale in Results component. Bolded are the notes that were selected to check. Argument is a scale(array)
 	function notesMarking(scale) {
+		//Mapping through the array of notes and returning <li> for every note. Class is conditional. If a given note was in array of the selected ones, it gets marked class to be bolded.
 		return scale[0].map((note) => (
 			<li className={notesToCompare.includes(note) ? "marked" : ""} key={note}>
 				{note}
@@ -357,7 +400,9 @@ export const AppProvider = ({ children }) => {
 		));
 	}
 
+	//Functions that displays the chords of a fitting scale in Results component. Bolded are the chords that were selected to check. Argument is a scale(array)
 	function chordsMarking(scale) {
+		//Mapping through the array of chords and returning <li> for every chord. Class is conditional. If a given chord was in array of the selected ones, it gets marked class to be bolded.
 		return scale[1].map((chord) => (
 			<li
 				className={chordsToCompare.includes(chord) ? "marked" : ""}
@@ -366,7 +411,6 @@ export const AppProvider = ({ children }) => {
 			</li>
 		));
 	}
-
 	return (
 		<AppContext.Provider
 			value={{
